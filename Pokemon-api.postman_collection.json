@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "93403903-ae38-411b-a3dd-df7458a6bab2",
+		"name": "Pokemon-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22595315"
+	},
+	"item": [
+		{
+			"name": "https://pokeapi.co/api/v2/",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//const res = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check the first ability details\", () => \r",
+							"{\r",
+							"    const res = pm.response.json();\r",
+							"    pm.expect(res.abilities[0]).to.have.property('ability');\r",
+							"    pm.expect(res.abilities[0].ability).to.have.property('name', 'overgrow');\r",
+							"    pm.expect(res.abilities[0].ability).to.have.property('url', 'https://pokeapi.co/api/v2/ability/65/');\r",
+							"    pm.expect(res.abilities[0]).to.have.property('is_hidden', false);\r",
+							"    pm.expect(res.abilities[0]).to.have.property('slot', 1);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the second ability details\", () => \r",
+							"{\r",
+							"    const secondAbility = pm.response.json().abilities[1];\r",
+							"    pm.expect(secondAbility).to.have.property('ability');\r",
+							"    pm.expect(secondAbility.ability.name).to.eql(\"chlorophyll\");\r",
+							"    pm.expect(secondAbility.ability).to.have.property('url', 'https://pokeapi.co/api/v2/ability/34/');\r",
+							"    pm.expect(secondAbility).to.have.property('is_hidden', true);\r",
+							"    pm.expect(secondAbility).to.have.property('slot', 3);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"check Status code is 200\", () => {\r",
+							"     pm.expect(pm.response.code).to.equal(200);\r",
+							"    \r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pokeapi.co/api/v2/pokemon/1/",
+					"protocol": "https",
+					"host": [
+						"pokeapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"v2",
+						"pokemon",
+						"1",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
